@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/page1.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      home: Page1(),
+    );
+  }
+}
+
+/*class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,7 +40,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-}
+}*/
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -41,49 +56,12 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
-  /*@override
-  _MyHomePageState createState() => _MyHomePageState();*/
   @override
-  State<StatefulWidget> createState() {
-    print("createState");
-    return _MyHomePageState();
-  }
-
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  ///在 State 对象被插入视图树的时候调用。这个函数在 State 的生命周期中只会被调用一次，所以我们可以在这里做一些初始化工作，比如为状态变量设定默认值
-  @override
-  void initState() {
-    print("initState");
-  }
-
-  ///didChangeDependencies 则用来专门处理 State 对象依赖关系变化，会在 initState() 调用结束后，被 Flutter 调用
-  @override
-  void didChangeDependencies() {
-    print("didChangeDependencies");
-  }
-
-  ///当 Widget 的配置发生变化时，比如，父 Widget 触发重建（即父 Widget 的状态发生变化时），热重载时，系统会调用这个函数
-  @override
-  void didUpdateWidget(covariant MyHomePage oldWidget) {
-    print("didUpdateWidget");
-  }
-
-  /// 当组件的可见状态发生变化时，deactivate 函数会被调用，这时 State 会被暂时从视图树中移除。值得注意的是，页面切换时，
-  /// 由于 State 对象在视图树中的位置发生了变化，需要先暂时移除后再重新添加，重新触发组件构建，因此这个函数也会被调用
-  @override
-  void deactivate() {
-    print("deactivate");
-  }
-
-  ///当 State 被永久地从视图树中移除时，Flutter 会调用 dispose 函数。而一旦到这个阶段，组件就要被销毁了，所以我们可以在这里进行最终的资源释放、移除监听、清理环境
-  @override
-  void dispose() {
-    print("dispose");
-  }
 
   void _incrementCounter() {
     setState(() {
@@ -96,10 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  //build，作用是构建视图,在这个函数中，根据父 Widget 传递过来的初始化配置数据，以及 State 的当前状态，创建一个 Widget 然后返回
   @override
   Widget build(BuildContext context) {
-    print("build");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
